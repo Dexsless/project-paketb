@@ -6,6 +6,7 @@ use App\Models\Koperasi;
 use App\Http\Requests\StoreKoperasiRequest;
 use App\Http\Requests\UpdateKoperasiRequest;
 use App\Models\Mahasiswa;
+use Illuminate\Http\Request;
 
 class KoperasiController extends Controller
 {
@@ -32,7 +33,7 @@ class KoperasiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreKoperasiRequest $request)
+    public function store(Request $request)
     {
         $validated = $request->validate([
             'mahasiswa_id' => 'required',
@@ -45,7 +46,7 @@ class KoperasiController extends Controller
         $koperasi->tanggal = $request->tanggal;
         $koperasi->save();
 
-        return redirect()->route('koperasis.index')
+        return redirect()->route('koperasi.store')
         ->with('success', 'Koperasi created successfully.');
     }
 
@@ -54,8 +55,9 @@ class KoperasiController extends Controller
      */
     public function show($id)
     {
+        $mahasiswa = Mahasiswa::all();
         $koperasi = Koperasi::findOrFail($id);
-        return view('koperasi.show', compact('koperasi'));
+        return view('koperasi.show', compact('koperasi', 'mahasiswa'));
     }
 
     /**
@@ -71,7 +73,7 @@ class KoperasiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateKoperasiRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $validated = $request->validate([
             'mahasiswa_id' => 'required',
@@ -84,7 +86,7 @@ class KoperasiController extends Controller
         $koperasi->tanggal = $request->tanggal;
         $koperasi->save();
 
-        return redirect()->route('koperasis.index')
+        return redirect()->route('koperasi.index')
         ->with('success', 'Koperasi updated successfully');
     }
 
@@ -95,7 +97,7 @@ class KoperasiController extends Controller
     {
         $koperasi = Koperasi::findOrFail($id);
         $koperasi->delete();
-        return redirect()->route('koperasis.index')
+        return redirect()->route('koperasi.index')
         ->with('success', 'Koperasi deleted successfully');
     }
 }

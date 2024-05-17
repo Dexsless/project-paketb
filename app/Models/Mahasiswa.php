@@ -10,6 +10,6 @@ class Mahasiswa extends Model
     use HasFactory;
     public function koperasi()
     {
-        return $this->hasMany(Koperasi::class, 'mahasiswa_id');
+        return $this->hasMany(Koperasi::class, 'mahasiswa_id', 'nama');
     }
 }

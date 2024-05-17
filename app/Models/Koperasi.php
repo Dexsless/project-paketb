@@ -10,6 +10,6 @@ class Koperasi extends Model
     use HasFactory;
     public function mahasiswa()
     {
-        return $this->belongsTo(Mahasiswa::class, 'mahasiswa_id');
+        return $this->belongsTo(Mahasiswa::class, 'mahasiswa_id', 'nama');
     }
 }
