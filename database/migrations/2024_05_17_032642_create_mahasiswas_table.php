@@ -19,6 +19,7 @@ return new class extends Migration
             $table->boolean('jenis_kelamin');
             $table->string('agama');
             $table->string('alamat');
+            $table->string('foto');
             $table->timestamps();
         });
     }

@@ -42,7 +42,8 @@ class MahasiswaController extends Controller
             'kelas' => 'required',
             'jenis_kelamin' => 'required',
             'agama' => 'required',
-            'alamat' => 'required'
+            'alamat' => 'required',
+            'foto' => 'required'
         ]);
         $mahasiswa = new Mahasiswa();
         $mahasiswa->nim = $request->nim;
@@ -51,6 +52,13 @@ class MahasiswaController extends Controller
         $mahasiswa->jenis_kelamin = $request->jenis_kelamin;
         $mahasiswa->agama = $request->agama;
         $mahasiswa->alamat = $request->alamat;
+        // upload foto
+        if ($request->hasFile('foto')) {
+            $img = $request->file('foto');
+            $name = rand(1000, 9999) . $img->getClientOriginalName();
+            $img->move('images/mahasiswa/', $name);
+            $mahasiswa->foto = $name;
+        }
         $mahasiswa->save();
 
         return redirect()->route('mahasiswa.index')

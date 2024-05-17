@@ -20,6 +20,7 @@
                                     <th>No</th>
                                     <th>Nim</th>
                                     <th>Nama Mahasiswa</th>
+                                    <th>Foto Mahasiswa</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -30,6 +31,7 @@
                                     <td>{{$no++}}</td>
                                     <td>{{$item->nim}}</td>
                                     <td>{{$item->nama}}</td>
+                                    <td><img src="{{asset('images/mahasiswa/'.$item->foto)}}" width="150" height="100"></td>
                                     <td>
                                         <form action="{{route('mahasiswa.destroy',$item->id)}}" method="post">
                                             @method('DELETE')
