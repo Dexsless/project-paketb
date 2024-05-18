@@ -12,4 +12,10 @@ class Mahasiswa extends Model
     {
         return $this->hasMany(Koperasi::class, 'mahasiswa_id', 'nama');
     }
+    public function deleteImage()
+    {
+        if ($this->foto && file_exists(public_path('images/mahasiswa/' . $this->foto))) {
+            return unlink(public_path('images/mahasiswa/' . $this->foto));
+        }
+    }
 }

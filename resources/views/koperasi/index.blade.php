@@ -20,7 +20,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Id Mahasiswa</th>
+                                    <th>Nama Mahasiswa</th>
                                     <th>Jumlah</th>
                                     <th>Tanggal</th>
                                     <th>Aksi</th>
@@ -31,7 +31,7 @@
                                 @foreach ($koperasi as $item)
                                 <tr>
                                     <td>{{$no++}}</td>
-                                    <td>{{$item->mahasiswa_id}}</td>
+                                    <td>{{$mahasiswa->nama}}</td>
                                     <td>{{$item->jumlah}}</td>
                                     <td>{{$item->tanggal}}</td>
                                     <td>

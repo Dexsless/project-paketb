@@ -9,7 +9,7 @@
                         style="float: right">Kembali</a>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('mahasiswa.update', $mahasiswa->id)}}" method="post">
+                    <form action="{{route('mahasiswa.update', $mahasiswa->id)}}" method="post" enctype="multipart/form-data">
                         @method('put')
                         @csrf
                         <div class="mb-2">
@@ -34,6 +34,16 @@
                             <label for="">Kelas</label>
                             <input type="text" class="form-control @error('kelas') is-invalid @enderror" name="kelas">
                             @error('kelas')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="mb-2">
+                            <label for="">Foto</label>
+                            <img src="{{asset('images/mahasiswa/'.$mahasiswa->foto)}}" width="150" height="100">
+                            <input type="file" class="form-control @error('foto') is-invalid @enderror" name="foto">
+                            @error('foto')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

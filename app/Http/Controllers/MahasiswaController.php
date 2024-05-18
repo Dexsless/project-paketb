@@ -103,6 +103,13 @@ class MahasiswaController extends Controller
         $mahasiswa->jenis_kelamin = $request->jenis_kelamin;
         $mahasiswa->agama = $request->agama;
         $mahasiswa->alamat = $request->alamat;
+        if ($request->hasFile('foto')) {
+            $mahasiswa->deleteImage(); // untuk hapus gambar sebelum diganti gambar baru
+            $img = $request->file('foto');
+            $name = rand(1000, 9999) . $img->getClientOriginalName();
+            $img->move('images/mahasiswa/', $name);
+            $mahasiswa->foto = $name;
+        }
         $mahasiswa->save();
 
         return redirect()->route('mahasiswa.index')

@@ -15,15 +15,18 @@
     <link
         href="https://cdn.datatables.net/v/bs5/dt-2.0.7/af-2.7.0/b-3.0.2/b-colvis-3.0.2/b-html5-3.0.2/r-3.0.2/sc-2.4.2/sb-1.7.1/sp-2.3.1/sl-2.0.1/sr-1.4.1/datatables.min.css"
         rel="stylesheet">
+        <style>
+            body {
+                background-color: #46546f;
+            }
+        </style>
 </head>
 
 <body>
     @include('layout.nav')
-
-    <main class="py-4">
+    <body>
         @yield('content')
-    </main>
-
+    </body>
     @include('layout.footer')
 
 

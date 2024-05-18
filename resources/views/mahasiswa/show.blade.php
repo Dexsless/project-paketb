@@ -39,6 +39,11 @@
                         <input type="text" class="form-control @error('alamat') is-invalid @enderror"
                             name="alamat" value="{{$mahasiswa->alamat}}" disabled>
                     </div>
+                    <div class="mb-2">
+                        <label for="">Foto Mahasiswa</label>
+                        <br>
+                        <img src="{{asset('images/mahasiswa/'.$mahasiswa->foto)}}" width="150" height="100">
+                    </div>
                 </div>
             </div>
         </div>
